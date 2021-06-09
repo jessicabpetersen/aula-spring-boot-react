@@ -1,0 +1,62 @@
+Spring boot: https://spring.io/projects/spring-boot
+
+GIT:
+* Criar repositório local: git init
+* Mandar os arquivos para o git: git add (nome do arquivo/pasta) (git add .   -> add tudo)
+	ex: subir a pasta src: git add src
+* Fazer o commit: git commit -m "mensagem"
+* Configurar o repositório local com o remoto: git remote add origin url(ex https://github.com/repositorio-criado-no-github)
+	origin: apelido para usar sempre do repositório remoto
+* Mostrar os repositórios remotos: git remote -v
+* Fazer o Pull: git push origin master
+* Fazer o Push: git push origin master 
+	origin: qual o repositório remoto
+	master: qual a branch
+* Mostrar os status: git status
+* Baixar repositório: git clone url
+
+---> Sequência: faz o commit, faz o pull e faz o push
+mais: https://blog.geekhunter.com.br/comandos-git-mais-utilizados/
+
+Criar projeto spring boot: https://start.spring.io/
+
+* application.properties (src/main/resources)
+	- Coloca-se as propriedades de ambiente do projeto, propriedades estáticas, como as propriedades de coexão com a base ded ados....
+	
+* Criando banco de dados etc: está no arquivo schema.sql
+
+* Configurar o módulo spring data jpa: https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.sql
+ Add no pom.xml: 
+	<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+ No application.properties:
+	spring.datasource.url=jdbc:postgresql://localhost:5432/minhasfinancas
+	spring.datasource.username=postgres
+	spring.datasource.password=postgres
+	spring.datasource.driver-class-name=org.postgres.Driver
+
+* Mapear a entidade usuário e lancamento: pacote model.entity classe Usuario e Lancamento
+
+* Configurar o lombok: https://projectlombok.org/setup/maven
+
+* Criação do Repository: pacote model.repository
+	Criar uma interface que extends JpaRepository<Entidade, tipo>
+	já cria os métodos padrões, pode criar caso queira exclusivos/diferentes
+
+* Utilizando o container de injeção de dependencias do Spring
+ - colocar o @Service dentro dos service.impl
+
+* Criar testes: src/test/java
+* Adicionar o banco de dados para teste em memória: 
+	criar no src/main/resources um "filme"
+	ex criado: application-test.properties
+* Atualizar dependencias.
+	sempre que adicionar nova dependencia
+	
